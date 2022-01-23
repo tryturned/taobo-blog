@@ -5,5 +5,5 @@
     cd hugo
     go install
     ./build.sh
-    docker run -p 1313:1313 -d $IMAGEID
+    docker run -p 80:80 -d $IMAGEID
 ```
