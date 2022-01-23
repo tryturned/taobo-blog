@@ -1,231 +1,334 @@
-baseURL = "http://localhost:1313/"
-languageCode = "en"
-defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
+# Tranquilpeak
+# Version : 0.5.3-BETA
+# Author : Thibaud Leprêtre
+# https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md
+
+baseURL = "http://taobo.site/"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh-cn"
 title = "TaoBo's Blog"
-preserveTaxonomyNames = true
-enableRobotsTXT = true
-enableEmoji = true
-theme = "even"
-enableGitInfo = false # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
+theme = "tranquilpeak"
+disqusShortname = "hugo-tranquilpeak-theme"
+# googleAnalytics = "UA-123-45"
+paginate = 7
+canonifyurls = true
 
-# Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
-pygmentsOptions = "linenos=table"
-pygmentsCodefences = true
-pygmentsUseClasses = true
-pygmentsCodefencesGuessSyntax = true
+[permalinks]
+  posts = "/:year/:month/:slug/"
 
-hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
-paginate = 5                                              # 首页每页显示的文章数
-disqusShortname = ""      # disqus_shortname
-googleAnalytics = ""      # UA-XXXXXXXX-X
-copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  archive = "archives"
 
-[author]                  # essential                     # 必需
+# ------
+# Markup
+# ------
+[markup]
+  # Set startLevel = 1 to support # title (<h1>title</h1>) otherwise table of content is blank/empty
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 1
+
+# ------
+# Author
+# ------
+[author]
   name = "taobo"
+  bio = "**世间无我这般人，待我写完这亿行**"
+  job = "coder"
+  location = "China"
+  # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
+  # gravatarEmail = "mtaobo@yeah.net"
+  picture = "images/header.jpg"
 
-[sitemap]                 # essential                     # 必需
-  changefreq = "weekly"
-  priority = 0.5
-  filename = "sitemap.xml"
-
-[[menu.main]]             # config your menu              # 配置目录
-  name = "Home"
-  weight = 10
+# ------------
+# Sidebar menu
+# ------------
+[[menu.main]]
+  weight = 1
   identifier = "home"
+  name = "Home"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-home\" aria-hidden=\"true\"></i>"
   url = "/"
 [[menu.main]]
-  name = "Archives"
-  weight = 20
-  identifier = "archives"0
-  url = "/post/"
-[[menu.main]]
-  name = "Tags"
-  weight = 30
-  identifier = "tags"
-  url = "/tags/"
-[[menu.main]]
-  name = "Categories"
-  weight = 40
+  weight = 2
   identifier = "categories"
-  url = "/categories/"
+  name = "Categories"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-bookmark\" aria-hidden=\"true\"></i>"
+  url = "/categories"
+[[menu.main]]
+  weight = 3
+  identifier = "tags"
+  name = "Tags"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-tags\" aria-hidden=\"true\"></i>"
+  url = "/tags"
+[[menu.main]]
+  weight = 4
+  identifier = "archives"
+  name = "Archives"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-archive\" aria-hidden=\"true\"></i>"
+  url = "/archives"
+[[menu.main]]
+  weight = 5
+  identifier = "about"
+  name = "About"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-question\" aria-hidden=\"true\"></i>"
+  url = "/about"
 
+[[menu.links]]
+  weight = 1
+  identifier = "github"
+  name = "GitHub"
+  pre = "<i class=\"sidebar-button-icon fab fa-lg fa-github\" aria-hidden=\"true\"></i>"
+  url = "https://github.com/tryturned"
+
+[[menu.links]]
+  weight = 2
+  identifier = "csdn"
+  name = "CSDN"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-laptop-code\" aria-hidden=\"true\"></i>"
+  url = "https://blog.csdn.net/qq_41345173?type=blog"
+
+[[menu.misc]]
+  weight = 0
+  identifier = "rss"
+  name = "RSS"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-rss\" aria-hidden=\"true\"></i>"
+  url = "/index.xml"
+
+# -------------
+# Customization
+# -------------
 [params]
-  version = "4.x"           # Used to give a friendly message when you have an incompatible update
-  debug = false             # If true, load `eruda.min.js`. See https://github.com/liriliri/eruda
+  # -----------
+  # Description
+  # -----------
+  description = "Hugo tranquilpeak theme demo"
 
-  since = "2017"            # Site creation time          # 站点建立时间
-  # use public git repo url to link lastmod git commit, enableGitInfo should be true.
-  # 指定 git 仓库地址，可以生成指向最近更新的 git commit 的链接，需要将 enableGitInfo 设置成 true.
-  gitRepo = ""
+  # ------------------
+  # Syntax highlighter
+  # ------------------
+  # Syntax highlighter, possible choice between: "highlight.js" and "prism.js"
+  # You can comment it to disable syntax highlighting
+  syntaxHighlighter = "highlight.js"
 
-  # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "TaoBo"        # default: the title value    # 默认值: 上面设置的title值
-  keywords = ["Hugo", "theme","even"]
-  description = "Hugo theme even example site."
+  # -----------
+  # Date format
+  # -----------
+  # Customize date format use to render blog post date, categories and other
+  # You must use date format used by Go Time package https://golang.org/pkg/time/
+  # Months (not work with short month like "jan", "feb", etc) are translated if translation exists on i18n folders
+  # Default format is: January 2, 2006
+  #  dateFormat = "2 January 2006"
 
-  # paginate of archives, tags and categories             # 归档、标签、分类每页显示的文章数目，建议修改为一个较大的值
-  archivePaginate = 50
+  # ---------------------------
+  # Posts related configuration
+  # ---------------------------
+  # Global keywords configuration. Following keywords will be add to every pages
+  keywords = ["development", "blog"]
 
-  # show 'xx Posts In Total' in archive page ?            # 是否在归档页显示文章的总数
-  showArchiveCount = true
+  # Hide sidebar on all article page to let article take full width to improve reading, and enjoy wide images and cover images. (true: enable, false: disable)
+  clearReading = false
 
-  # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
-  dateFormatToUse = "2006-01-02"
+  # Define categories will create hierarchy between parents: `categories = ["foo", "bar"]` will consider "bar" a sub-category of "foo".
+  # If false it will flat categories.
+  hierarchicalCategories = true
 
-  # show word count and read time ?                       # 是否显示字数统计与阅读时间
-  moreMeta = false
+  # Display `Next` on left side of the pagination, and `Prev` on right side one.
+  # If you set this value to `true`, these positions swap.
+  #  swapPaginator = true
 
-  # Syntax highlighting by highlight.js
-  highlightInClient = false
+  # ---------------------
+  # Sidebar configuration
+  # ---------------------
+  # Customization
+  # Define the behavior of the sidebar
+  # 1: Display extra large sidebar on extra large screen, large sidebar on large screen,
+  #    medium sidebar on medium screen and header bar on small screen and
+  # extra large sidebar is swiped on extra large screen and large sidebar on all lower screen (default)
+  # 2: Display large sidebar on large screen, medium sidebar on medium screen and
+  #    header bar on small screen and large sidebar is swiped
+  # 3: Display medium sidebar on large and medium screen and header bar on small screen and
+  #    medium sidebar is swiped
+  # 4: Display header bar on all screens, extra large sidebar is swiped on extra large screen and
+  #    large sidebar is swiped on all lower screens
+  # 5: Display header bar on all screens and large sidebar is swiped on large screen
+  # 6: Display header bar on all screens and medium sidebar is swiped
+  sidebarBehavior = 2
 
-  # 一些全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能，在 archetypes/default.md 查看更多信息。
-  # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
-  toc = true                                                                            # 是否开启目录
-  autoCollapseToc = false   # Auto expand and collapse toc                              # 目录自动展开/折叠
-  fancybox = true           # see https://github.com/fancyapps/fancybox                 # 是否启用fancybox（图片可点击）
+  # Customize link of author avatar in sidebar
+  #  [params.sidebar.profile]
+  #    url = "/#about"
 
-  # mathjax
-  mathjax = false           # see https://www.mathjax.org/                              # 是否使用mathjax（数学公式）
-  mathjaxEnableSingleDollar = false                                                     # 是否使用 $...$ 即可進行inline latex渲染
-  mathjaxEnableAutoNumber = false                                                       # 是否使用公式自动编号
-  mathjaxUseLocalFiles = false  # You should install mathjax in `your-site/static/lib/mathjax`
+  # -------------------
+  # Media configuration
+  # -------------------
+  # Your blog cover picture. I STRONGLY recommend you to use a CDN to speed up loading of pages.
+  # There is many free CDN like Cloudinary or you can also use indirectly
+  # by using services like Google Photos.
+  # Current image is on AWS S3 and delivered by AWS CloudFront.
+  # Otherwise put your image, for example `cover.jpg` in folder `static/images/`,
+  # and use relative url : `images/cover.jpg`
+  coverImage = "images/sidebarbg.png"
 
-  postMetaInFooter = true   # contain author, lastMod, markdown link, license           # 包含作者，上次修改时间，markdown链接，许可信息
-  linkToMarkDown = false    # Only effective when hugo will output .md files.           # 链接到markdown原始文件（仅当允许hugo生成markdown文件时有效）
-  contentCopyright = ''     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
+  # Display an image gallery at the end of a post which have photos variables (false: disabled, true: enabled)
+  imageGallery = true
 
-  changyanAppid = ""        # Changyan app id             # 畅言
-  changyanAppkey = ""       # Changyan app key
+  # Display thumbnail image of each post on index pages (false: disabled, true: enabled)
+  thumbnailImage = true
+  # Display thumbnail image at the right of title in index pages (`right`, `left` or `bottom`)
+  # Set this value to `right` if you have old posts to keep the old style on them
+  # and define `thumbnailImagePosition` on a post to overwrite this setting
+  thumbnailImagePosition = "bottom"
+  # Automatically select the cover image or the first photo from the gallery of a post if there is no thumbnail image as the thumbnail image
+  # Set this value to `true` if you have old posts that use the cover image or the first photo as the thumbnail image
+  # and set `autoThumbnailImage` to `false` on a post to overwrite this setting
+  autoThumbnailImage = true
 
-  livereUID = ""            # LiveRe UID                  # 来必力
+  # Your favicon path, default is "/favicon.png"
+  favicon = "images/favicon.png"
 
-  baiduPush = false        # baidu push                  # 百度
-  baiduAnalytics = ""      # Baidu Analytics
-  baiduVerification = ""   # Baidu Verification
-  googleVerification = ""  # Google Verification         # 谷歌
+  # ------------------
+  # External resources
+  # ------------------
+  # Custom CSS. Put here your custom CSS files. They are loaded after the theme CSS;
+  # they have to be referred from static root. Example
+  #  [[params.customCSS]]
+  #    href = "css/mystyle.css"
 
-  # Link custom CSS and JS assets
-  #   (relative to /static/css and /static/js respectively)
-  customCSS = []
-  customJS = []
+  # Custom JS. Put here your custom JS files. They are loaded after the theme JS;
+  # they have to be referred from static root. Example
+  #  [[params.customJS]]
+  #     src = "js/myscript.js"
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"
+    integrity = "sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  uglyURLs = false          # please keep same with uglyurls setting
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"
+    integrity = "sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  # Show language selector for multilingual site.
-  showLanguageSelector = false
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"
+    integrity = "sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  [params.publicCDN]        # load these files from public cdn                          # 启用公共CDN，需自行定义
-    enable = true
-    jquery = '<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>'
-    slideout = '<script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>'
-    fancyboxJS = '<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>'
-    fancyboxCSS = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">'
-    timeagoJS = '<script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>'
-    timeagoLocalesJS = '<script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>'
-    flowchartDiagramsJS = '<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script>'
-    sequenceDiagramsCSS = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">'
-    sequenceDiagramsJS = '<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>'
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"
+    integrity = "sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  # Display a message at the beginning of an article to warn the readers that it's content may be outdated.
-  # 在文章开头显示提示信息，提醒读者文章内容可能过时。
-  [params.outdatedInfoWarning]
-    enable = false
-    hint = 30               # Display hint if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示提醒
-    warn = 180              # Display warning if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示警告
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"
+    integrity = "sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  [params.gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
-    clientId = ""           # Your client ID
-    clientSecret = ""       # Your client secret
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"
+    integrity = "sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  [params.utterances]       # https://utteranc.es/
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"
+    integrity = "sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  [params.gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
-    clientId = ""           # Your client ID
-    clientSecret = ""       # Your client secret
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"
+    integrity = "sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  # Valine.
-  # You can get your appid and appkey from https://leancloud.cn
-  # more info please open https://valine.js.org
-  [params.valine]
-    enable = false
-    appId = '你的appId'
-    appKey = '你的appKey'
-    notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
-    verify = false # Verification code
-    avatar = 'mm'
-    placeholder = '说点什么吧...'
-    visitor = false
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"
+    integrity = "sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  [params.flowchartDiagrams]# see https://blog.olowolo.com/example-site/post/js-flowchart-diagrams/
-    enable = false
-    options = ""
+  [[params.customJS]]
+    src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"
+    integrity = "sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw=="
+    crossorigin = "anonymous"
+    async = true
+    defer = true
 
-  [params.sequenceDiagrams] # see https://blog.olowolo.com/example-site/post/js-sequence-diagrams/
-    enable = false
-    options = ""            # default: "{theme: 'simple'}"
+  # ---------------
+  # Sharing options
+  # ---------------
+  # Comment and uncomment to enable or disable sharing options
+  # If you wanna add a sharing option, read user documentation :
+  # Tranquilpeak configuration > Theme configuration > sharing-options
 
-  [params.busuanzi]         # count web traffic by busuanzi                             # 是否使用不蒜子统计站点访问量
-    enable = false
-    siteUV = true
-    sitePV = true
-    pagePV = true
+  [[params.sharingOptions]]
+    name = "Twitter"
+    icon = "fab fa-twitter"
+    url = "https://twitter.com/intent/tweet?text=%s"
 
-  [params.reward]                                         # 文章打赏
-    enable = false
-    wechat = "/path/to/your/wechat-qr-code.png"           # 微信二维码
-    alipay = "/path/to/your/alipay-qr-code.png"           # 支付宝二维码
+  [[params.sharingOptions]]
+    name = "Linkedin"
+    icon = "fab fa-linkedin"
+    url = "https://www.linkedin.com/sharing/share-offsite/?url=%s"
 
-  [params.social]                                         # 社交链接
-    # a-email = "mailto:your@email.com"
-    # b-stack-overflow = "http://localhost:1313"
-    c-twitter = "http://localhost:1313"
-    # d-facebook = "http://localhost:1313"
-    # e-linkedin = "http://localhost:1313"
-    # f-google = "http://localhost:1313"
-    g-github = "http://localhost:1313"
-    # h-weibo = "http://localhost:1313"
-    # i-zhihu = "http://localhost:1313"
-    # j-douban = "http://localhost:1313"
-    # k-pocket = "http://localhost:1313"
-    # l-tumblr = "http://localhost:1313"
-    # m-instagram = "http://localhost:1313"
-    # n-gitlab = "http://localhost:1313"
-    # o-bilibili = "http://localhost:1313"
+  # --------------
+  # Comment system
+  # --------------
+  [params.comment]
+    [params.comment.disqus]
+      enable = false
+      shortname = "master"
+    # https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#gitalk
+    [params.comment.gitalk]
+      enable = false
+      # clientId =
+      # clientSecret =
+      # owner =
+      # repo =
+      # See all options: https://github.com/gitalk/gitalk#options
+      [params.comment.gitalk.options]
+        language = "en"
+        perPage = 10
+        distractionFreeMode = false
+        enableHotKey = true
+        pagerDirection = "first"
 
-# See https://gohugo.io/about/hugo-and-gdpr/
-[privacy]
-  [privacy.googleAnalytics]
-    anonymizeIP = true      # 12.214.31.144 -> 12.214.31.0
-  [privacy.youtube]
-    privacyEnhanced = true
+  # --------------------
+  # Header configuration
+  # --------------------
+  # The link at the right of the header is customizable
+  # You can add a link (as an icon) at the right of the header instead of the author's gravatar image or author's picture.
+  # By default, author's gravatar or author's picture is displayed.
+  #  url: /#search
+  #  icon: search
+  #  class: st-search-show-outputs
+  [params.header.rightLink]
+    class = ""
+    icon = ""
+    url = "/#about"
 
-# see https://gohugo.io/getting-started/configuration-markup
-[markup]
-  [markup.tableOfContents]
-    startLevel = 1
-  [markup.goldmark.renderer]
-    unsafe = true
-
-# 将下面这段配置取消注释可以使 hugo 生成 .md 文件
-# Uncomment these options to make hugo output .md files.
-#[mediaTypes]
-#  [mediaTypes."text/plain"]
-#    suffixes = ["md"]
-#
-#[outputFormats.MarkDown]
-#  mediaType = "text/plain"
-#  isPlainText = true
-#  isHTML = false
-#
-#[outputs]
-#  home = ["HTML", "RSS"]
-#  page = ["HTML", "MarkDown"]
-#  section = ["HTML", "RSS"]
-#  taxonomy = ["HTML", "RSS"]
-#  taxonomyTerm = ["HTML"]
+  # --------------------
+  # Footer configuration
+  # --------------------
+  # Customize copyright value "© 2017 <CUSTOMIZATION>. All Rights Reserved"
+  [params.footer]
+    # copyright = "<a href=\"https://github.com/tryturned\">taobo</a>"
+    copyright = "<a href=\"https://beian.miit.gov.cn\" target=\"_blank\">陇ICP备2022000179号-1</a>"

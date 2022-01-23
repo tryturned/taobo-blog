@@ -1,0 +1,5 @@
+# hugo/
+.git*
+.hugo*
+build.sh
+README.md
