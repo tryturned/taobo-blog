@@ -10,8 +10,8 @@ ENV GOPATH=/root/go
 ENV PATH=$PATH:$GOPATH/bin
 
 # gcc/g++ are required to build SASS libraries for extended version
-#RUN apk update && \
-#    apk add --no-cache gcc g++ musl-dev
+RUN apk update && \
+   apk add --no-cache gcc g++ musl-dev git
 
 # 安装hugo
 # https://github.com/gohugoio/hugo#fetch-from-github
