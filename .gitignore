@@ -15,3 +15,5 @@ syncFolders*
 webhook.txt
 .hugo_build.lock
 hugo
+.user.ini
+.htaccess

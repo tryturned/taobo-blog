@@ -3,7 +3,7 @@
 # Author : Thibaud Leprêtre
 # https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md
 
-baseURL = "http://taobo.site/"
+baseURL = "https://taobo.site/"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 title = "TaoBo's Blog"
@@ -330,5 +330,5 @@ canonifyurls = true
   # --------------------
   # Customize copyright value "© 2017 <CUSTOMIZATION>. All Rights Reserved"
   [params.footer]
-    # copyright = "<a href=\"https://github.com/tryturned\">taobo</a>"
     copyright = "<a href=\"https://beian.miit.gov.cn\" target=\"_blank\">陇ICP备2022000179号-1</a>"
+
