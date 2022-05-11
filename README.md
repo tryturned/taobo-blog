@@ -4,6 +4,8 @@
     git clone https://github.com/gohugoio/hugo.git
     cd hugo
     go install
-    ./build.sh
-    docker run -p 80:80 -d $IMAGEID
+    git clone https://github.com/tryturned/taobo-blog.git
+    cd taobo-blog
+    git submodule update --init
+    hugo server -D 
 ```
