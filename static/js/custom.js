@@ -67,8 +67,7 @@ window.onload = function() {
 /* 站点运行时间 */
 function runtime() {
 	window.setTimeout("runtime()", 1000);
-	/* 请修改这里的起始时间 */
-    let startTime = new Date('04/24/2018 15:00:00');
+    let startTime = new Date('12/24/2021 15:00:00');
     let endTime = new Date();
     let usedTime = endTime - startTime;
     let days = Math.floor(usedTime / (24 * 3600 * 1000));
