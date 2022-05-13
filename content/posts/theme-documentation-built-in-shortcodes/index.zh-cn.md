@@ -79,35 +79,7 @@ Hugo 附带了一组预定义的 shortcodes, 它们实现了一些非常常见�
 
 ## 3 highlight
 
-[`highlight` 的文档](https://gohugo.io/content-management/shortcodes#instagram)
-
-一个 `highlight` 示例:
-
-```markdown
-{{</* highlight html */>}}
-<section id="main">
-    <div>
-        <h1 id="title">{{ .Title }}</h1>
-        {{ range .Pages }}
-            {{ .Render "summary"}}
-        {{ end }}
-    </div>
-</section>
-{{</* /highlight */>}}
-```
-
-呈现的输出效果如下:
-
-{{< highlight html >}}
-<section id="main">
-    <div>
-        <h1 id="title">{{ .Title }}</h1>
-        {{ range .Pages }}
-            {{ .Render "summary"}}
-        {{ end }}
-    </div>
-</section>
-{{< /highlight >}}
+[`highlight` 的文档](https://gohugo.io/content-management/shortcodes#highlight)
 
 ## 4 instagram
 
@@ -137,44 +109,6 @@ For more information please have a look at GitHub issue [#7879](https://github.c
 
 [`ref` 和 `relref` 的文档](https://gohugo.io/content-management/shortcodes#ref-and-relref)
 
-## 7 tweet
+## 7 详见源网站
 
-[`tweet` 的文档](https://gohugo.io/content-management/shortcodes#tweet)
-
-一个 `tweet` 示例:
-
-```markdown
-{{</* tweet 917359331535966209 */>}}
-```
-
-呈现的输出效果如下:
-
-{{< tweet 917359331535966209 >}}
-
-## 8 vimeo
-
-[`vimeo` 的文档](https://gohugo.io/content-management/shortcodes#vimeo)
-
-一个 `vimeo` 示例:
-
-```markdown
-{{</* vimeo 146022717 */>}}
-```
-
-呈现的输出效果如下:
-
-{{< vimeo 146022717 >}}
-
-## 9 youtube
-
-[`youtube` 的文档](https://gohugo.io/content-management/shortcodes#youtube)
-
-一个 `youtube` 示例:
-
-```markdown
-{{</* youtube w7Ft2ymGmfc */>}}
-```
-
-呈现的输出效果如下:
-
-{{< youtube w7Ft2ymGmfc >}}
+<https://hugoloveit.com/theme-documentation-built-in-shortcodes/>

@@ -78,35 +78,7 @@ The HTML looks like this:
 
 ## 3 highlight
 
-[Documentation of `highlight`](https://gohugo.io/content-management/shortcodes#instagram)
-
-Example `highlight` input:
-
-```markdown
-{{</* highlight html */>}}
-<section id="main">
-    <div>
-        <h1 id="title">{{ .Title }}</h1>
-        {{ range .Pages }}
-            {{ .Render "summary"}}
-        {{ end }}
-    </div>
-</section>
-{{</* /highlight */>}}
-```
-
-The rendered output looks like this:
-
-{{< highlight html >}}
-<section id="main">
-    <div>
-        <h1 id="title">{{ .Title }}</h1>
-        {{ range .Pages }}
-            {{ .Render "summary"}}
-        {{ end }}
-    </div>
-</section>
-{{< /highlight >}}
+[Documentation of `highlight`](https://gohugo.io/content-management/shortcodes#highlight)
 
 ## 4 instagram
 
@@ -136,44 +108,6 @@ The rendered output looks like this:
 
 [Documentation of `ref` and `relref`](https://gohugo.io/content-management/shortcodes#ref-and-relref)
 
-## 7 tweet
+## 7 详见源网站
 
-[Documentation of `tweet`](https://gohugo.io/content-management/shortcodes#tweet)
-
-Example `tweet` input:
-
-```markdown
-{{</* tweet 917359331535966209 */>}}
-```
-
-The rendered output looks like this:
-
-{{< tweet 917359331535966209 >}}
-
-## 8 vimeo
-
-[Documentation of `vimeo`](https://gohugo.io/content-management/shortcodes#vimeo)
-
-Example `vimeo` input:
-
-```markdown
-{{</* vimeo 146022717 */>}}
-```
-
-The rendered output looks like this:
-
-{{< vimeo 146022717 >}}
-
-## 9 youtube
-
-[Documentation of `youtube`](https://gohugo.io/content-management/shortcodes#youtube)
-
-Example `youtube` input:
-
-```markdown
-{{</* youtube w7Ft2ymGmfc */>}}
-```
-
-The rendered output looks like this:
-
-{{< youtube w7Ft2ymGmfc >}}
+<https://hugoloveit.com/theme-documentation-built-in-shortcodes/>
