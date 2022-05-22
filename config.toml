@@ -476,21 +476,21 @@ enableEmoji = true
     title = "categories"
   [[menu.main]]
     weight = 4
-    identifier = "documentation"
+    identifier = "python"
     pre = ""
-    name = "文档"
-    url = "/categories/documentation/"
-    title = "documentation"
+    name = "Python"
+    url = "/categories/python/"
+    title = "python"
+  # [[menu.main]]
+  #   weight = 5
+  #   identifier = "about"
+  #   pre = ""
+  #   post = ""
+  #   name = "关于"
+  #   url = "/about/"
+  #   title = "about"
   [[menu.main]]
     weight = 5
-    identifier = "about"
-    pre = ""
-    post = ""
-    name = "关于"
-    url = "/about/"
-    title = "about"
-  [[menu.main]]
-    weight = 6
     identifier = "csdn"
     pre = "<i class=\"sidebar-button-icon fas fa-lg fa-laptop-code\" aria-hidden=\"true\"></i>"
     post = ""

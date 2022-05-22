@@ -7,8 +7,7 @@ draft: false
 author: "神仙404"
 authorLink: "https://blog.csdn.net/qq_41345173/article/details/121454774"
 description: "基于腾讯云cvm的云原生环境搭建."
-
-tags: ["Markdown"]
+tags: ["计算机"]
 categories: ["开发环境"]
 
 images: ["cloud-native.png"]
