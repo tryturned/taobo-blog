@@ -116,6 +116,7 @@ export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct
 export GOSUMDB=off
 export GOPATH=/root/go
+export PATH=$PATH:$GOPATH/bin
 ```
 
 安装proto依赖，便于进行RPC开发
@@ -132,10 +133,11 @@ ldconfig
 protoc --version # 检测是否安装成功
 go get github.com/golang/protobuf # 安装依赖包
 # 安装gprc protocol插件
-go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
-echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc
-
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+# 安装grpc-gateway插件
+go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@latest
+go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
 ```
 
 ## 四、安装nginx

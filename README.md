@@ -1,6 +1,7 @@
 # quickstart
 
 ```bash
+    cd /tmp
     curl -fLO https://github.com/gohugoio/hugo/releases/download/v0.98.0/hugo_extended_0.98.0_Linux-64bit.tar.gz
     tar -xzvf hugo_extended_0.98.0_Linux-64bit.tar.gz
     mv hugo /usr/local/bin
