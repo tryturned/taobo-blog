@@ -1,4 +1,4 @@
-# quickstart
+## quickstart
 
 ```bash
     cd /tmp
@@ -8,5 +8,9 @@
     git clone https://github.com/tryturned/taobo-blog.git
     cd taobo-blog
     git submodule update --init
-    hugo server -D 
+    hugo server -e production 
 ```
+
+## 参考
+- [LoveIt官方文档: 主题文档 - 基本概念](https://hugoloveit.com/zh-cn/theme-documentation-basics)
+- https://lewky.cn/posts/hugo-3.html/

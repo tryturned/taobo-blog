@@ -183,7 +183,7 @@ enableEmoji = true
     Twitter = "GO010177959"
     Telegram = ""
     Zhihu = "er-ling-46-7"
-    Email = "mtaobo@gmail.com"
+    Email = ""
     RSS = ""
 
   # 文章页面全局配置
@@ -287,15 +287,11 @@ enableEmoji = true
         highlight = true
         enableQQ = false
         serverURLs = "https://i97duova.lc-cn-n1-shared.com"
+        #serverURLs = "https://api.taobo.site"
         # emoji data file name, default is "google.yml"
         # ["apple.yml", "google.yml", "facebook.yml", "twitter.yml"]
         # located in "themes/LoveIt/assets/data/emoji/" directory
         # you can store your own data files in the same path under your project:
-        # "assets/data/emoji/"
-        # emoji 数据文件名称, 默认是 "google.yml"
-        # ["apple.yml", "google.yml", "facebook.yml", "twitter.yml"]
-        # 位于 "themes/LoveIt/assets/data/emoji/" 目录
-        # 可以在你的项目下相同路径存放你自己的数据文件:
         # "assets/data/emoji/"
         emoji = ""
     # Third-party library config
@@ -481,19 +477,12 @@ enableEmoji = true
     name = "Python"
     url = "/categories/python/"
     title = "python"
-  # [[menu.main]]
-  #   weight = 5
-  #   identifier = "about"
-  #   pre = ""
-  #   post = ""
-  #   name = "关于"
-  #   url = "/about/"
-  #   title = "about"
   [[menu.main]]
     weight = 5
-    identifier = "csdn"
-    pre = "<i class=\"sidebar-button-icon fas fa-lg fa-laptop-code\" aria-hidden=\"true\"></i>"
+    identifier = "about"
+    pre = ""
     post = ""
-    name = ""
-    url = "https://blog.csdn.net/qq_41345173?type=blog"
-    title = "csdn"
+    name = "关于"
+    url = "/about/"
+    title = "about"
+

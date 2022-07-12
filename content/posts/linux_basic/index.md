@@ -4,11 +4,11 @@ title: "Linux入门基础"
 date: 2020-11-14T23:57:40+08:00
 lastmod: 2020-01-11T16:45:40+08:00
 draft: false
-author: "神仙404"
-authorLink: "https://blog.csdn.net/qq_41345173/article/details/121454774"
+author: "CyC2018"
+authorLink: "https://github.com/CyC2018/CS-Notes/blob/master/notes/Linux.md"
 description: "Linux入门基础."
 tags: ["计算机"]
-categories: ["操作系统"]
+categories: ["转载"]
 ---
 
 - 能简单使用 cat，grep，cut 等命令进行一些操作；
