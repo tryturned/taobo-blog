@@ -164,7 +164,7 @@ enableEmoji = true
       # title shown in home page (HTML format is supported)
       title = ""
       # 主页显示的网站副标题
-      subtitle = "君子不重则不威，学则不固。主忠信，无友不如己者，过则勿惮改。"
+      subtitle = "知而慎行，君子不立于危墙之下，焉可等闲视之。"
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号
@@ -178,7 +178,7 @@ enableEmoji = true
       paginate = 6
   # 主页的社交信息设置
   [params.social]
-    GitHub = "tryturned"
+    GitHub = "tryturned/taobo-blog"
     Linkedin = ""
     Twitter = "GO010177959"
     Telegram = ""
