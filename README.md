@@ -11,6 +11,10 @@
     hugo server -e production 
 ```
 
-## 参考
+## 参考博客
+
 - [LoveIt官方文档: 主题文档 - 基本概念](https://hugoloveit.com/zh-cn/theme-documentation-basics)
-- https://lewky.cn/posts/hugo-3.html/
+
+- 【雨临Lewis】<https://lewky.cn/posts/hugo-3.html/>
+
+- 【Hugo 中的 ref 和 relref】<https://www.thisfaner.com/p/ref-relref-in-hugo/>

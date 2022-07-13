@@ -475,7 +475,7 @@ enableEmoji = true
     identifier = "python"
     pre = ""
     name = "Python"
-    url = "/categories/python/"
+    url = "/python/"
     title = "python"
   [[menu.main]]
     weight = 5
