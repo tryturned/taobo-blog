@@ -4,7 +4,7 @@ title: "基于腾讯云cvm的云原生环境搭建"
 date: 2021-12-14T23:57:40+08:00
 lastmod: 2022-01-11T16:45:40+08:00
 draft: false
-author: "神仙404"
+author: "taobo"
 authorLink: "https://blog.csdn.net/qq_41345173/article/details/121454774"
 description: "基于腾讯云cvm的云原生环境搭建."
 tags: ["计算机"]

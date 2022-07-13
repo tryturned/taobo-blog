@@ -4,8 +4,8 @@ title: "Python爬虫学习"
 date: 2020-10-11T11:59:40+08:00
 lastmod: 2021-01-11T16:45:40+08:00
 draft: false
-author: "神仙404"
-authorLink: "https://blog.csdn.net/qq_41345173/"
+author: "taobo"
+authorLink: "https://taobo.site/"
 tags: ["计算机"]
 categories: ["Python"]
 ---

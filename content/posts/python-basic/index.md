@@ -4,7 +4,7 @@ title: "Python基础学习"
 date: 2020-09-21T13:57:40+08:00
 lastmod: 2020-01-11T16:45:40+08:00
 draft: false
-author: "神仙404"
+author: "taobo"
 authorLink: "https://blog.csdn.net/qq_41345173/"
 tags: ["计算机"]
 categories: ["Python"]
