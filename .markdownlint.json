@@ -1,0 +1,7 @@
+{
+    "default": true,
+    "no-hard-tabs": false,
+    "MD007": { "indent": 4 },
+    "MD013": {"code_blocks": false, "line_length": 180},
+    "MD033": {"allowed_elements": ["span", "div", "img", "br", "sup", "DT", "A"]}
+}

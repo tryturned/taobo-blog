@@ -7,7 +7,7 @@ draft: false
 author: "CyC2018"
 authorLink: "https://github.com/CyC2018/CS-Notes/blob/master/notes/Linux.md"
 description: "Linux入门基础."
-tags: ["计算机"]
+tags: ["linux", "bash"]
 categories: ["转载"]
 ---
 
@@ -102,8 +102,6 @@ Linux 发行版是 Linux 内核及各种应用软件的集成版本。
 ### VIM 三个模式
 
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191209002818626.png"/> </div><br>
-
-
 
 - 一般指令模式（Command mode）：VIM 的默认模式，可以用于移动游标查看内容；
 - 编辑模式（Insert mode）：按下 "i" 等按键之后进入，可以对文本进行编辑；
@@ -358,7 +356,7 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 
 更换当前目录。
 
-```
+```bash
 cd [相对路径或绝对路径]
 ```
 
@@ -366,7 +364,7 @@ cd [相对路径或绝对路径]
 
 创建目录。
 
-```
+```bash
 ## mkdir [-mp] 目录名称
 -m ：配置目录权限
 -p ：递归创建目录
@@ -477,7 +475,6 @@ cp [-adfilprsu] source destination
 ### 链接
 
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/1e46fd03-0cda-4d60-9b1c-0c256edaf6b2.png" width="450px"> </div><br>
-
 
 ```html
 ## ln [-sf] source_filename dist_filename
@@ -593,7 +590,7 @@ locate 使用 /var/lib/mlocate/ 这个数据库来进行搜索，它存储在内
 example: find . -name "shadow*"
 ```
 
-**① 与时间有关的选项**  
+##### ① 与时间有关的选项  
 
 ```html
 -mtime  n ：列出在 n 天前的那一天修改过内容的文件
@@ -606,7 +603,7 @@ example: find . -name "shadow*"
 
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/658fc5e7-79c0-4247-9445-d69bf194c539.png" width=""/> </div><br>
 
-**② 与文件拥有者和所属群组有关的选项**  
+##### ② 与文件拥有者和所属群组有关的选项
 
 ```html
 -uid n
@@ -617,7 +614,7 @@ example: find . -name "shadow*"
 -nogroup：搜索所属群组不存在于 /etc/group 的文件
 ```
 
-**③ 与文件权限和名称有关的选项**  
+##### ③ 与文件权限和名称有关的选项
 
 ```html
 -name filename
@@ -687,7 +684,7 @@ $ bzip2 [-cdkzv#] filename
 查看命令：xzcat、xzmore、xzless、xzgrep。
 
 ```html
-$ xz [-dtlkc#] filename
+xz [-dtlkc#] filename
 ```
 
 ### 打包
@@ -736,9 +733,9 @@ $ tar [-z|-j|-J] [xv] [-f 已有的 tar 文件] [-C 目录]    ==解压缩
 输出变量使用 echo 命令。
 
 ```bash
-$ x=abc
-$ echo $x
-$ echo ${x}
+x=abc
+echo $x
+echo ${x}
 ```
 
 变量内容如果有空格，必须使用双引号或者单引号。
@@ -763,9 +760,9 @@ $ declare [-aixr] variable
 使用 [ ] 来对数组进行索引操作：
 
 ```bash
-$ array[1]=a
-$ array[2]=b
-$ echo ${array[1]}
+array[1]=a
+array[2]=b
+echo ${array[1]}
 ```
 
 ### 指令搜索顺序
@@ -792,7 +789,7 @@ $ echo ${array[1]}
 如果需要将标准输出以及标准错误输出同时重定向到一个文件，需要将某个输出转换为另一个输出，例如 2\>&1 表示将标准错误输出转换为标准输出。
 
 ```bash
-$ find /home -name .bashrc > list 2>&1
+find /home -name .bashrc > list 2>&1
 ```
 
 ## 八、管道指令
@@ -802,7 +799,7 @@ $ find /home -name .bashrc > list 2>&1
 在命令之间使用 | 分隔各个管道命令。
 
 ```bash
-$ ls -al /etc | less
+ls -al /etc | less
 ```
 
 ### 提取指令
@@ -893,7 +890,7 @@ $ last | cut -d ' ' -f 1 | sort | uniq -c
 输出重定向会将输出内容重定向到文件中，而   **tee**   不仅能够完成这个功能，还能保留屏幕上的输出。也就是说，使用 tee 指令，一个输出会同时传送到文件和屏幕上。
 
 ```html
-$ tee [-a] file
+tee [-a] file
 ```
 
 ### 字符转换指令
@@ -908,7 +905,7 @@ $ tr [-ds] SET1 ...
 示例，将 last 输出的信息所有小写转换为大写。
 
 ```html
-$ last | tr '[a-z]' '[A-Z]'
+last | tr '[a-z]' '[A-Z]'
 ```
 
    **col**   将 tab 字符转为空格字符。
@@ -982,7 +979,7 @@ $ grep -n 'the' regular_express.txt
 示例：正则表达式 a{m,n} 用来匹配字符 a m\~n 次，这里需要将 { 和 } 进行转义，因为它们在 shell 是有特殊意义的。
 
 ```html
-$ grep -n 'a\{2,5\}' regular_express.txt
+grep -n 'a\{2,5\}' regular_express.txt
 ```
 
 ### printf
@@ -1025,7 +1022,7 @@ dmtsai   Fri
 可以根据字段的某些条件进行匹配，例如匹配字段小于某个值的那一行数据。
 
 ```html
-$ awk '条件类型 1 {动作 1} 条件类型 2 {动作 2} ...' filename
+awk '条件类型 1 {动作 1} 条件类型 2 {动作 2} ...' filename
 ```
 
 示例：/etc/passwd 文件第三个字段为 UID，对 UID 小于 10 的数据进行处理。
@@ -1197,6 +1194,4 @@ options 参数主要有 WNOHANG 和 WUNTRACED 两个选项，WNOHANG 可以使 w
 - [硬盘](https://zh.wikipedia.org/wiki/%E7%A1%AC%E7%9B%98)
 - [Difference between SAS and SATA](http://www.differencebetween.info/difference-between-sas-and-sata)
 - [BIOS](https://zh.wikipedia.org/wiki/BIOS)
-- [File system design case studies](https://www.cs.rutgers.edu/\~pxk/416/notes/13-fs-studies.html)
-- [Programming Project #4](https://classes.soe.ucsc.edu/cmps111/Fall08/proj4.shtml)
 - [FILE SYSTEM DESIGN](http://web.cs.ucla.edu/classes/fall14/cs111/scribe/11a/index.html)
