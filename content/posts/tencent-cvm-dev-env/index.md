@@ -2,12 +2,12 @@
 weight: 4
 title: "基于腾讯云cvm的云原生环境搭建"
 date: 2021-12-14T23:57:40+08:00
-lastmod: 2022-01-11T16:45:40+08:00
+lastmod: 2022-07-22T11:25:40+08:00
 draft: false
 author: "taobo"
 authorLink: "https://blog.csdn.net/qq_41345173/article/details/121454774"
 description: "基于腾讯云cvm的云原生环境搭建."
-tags: ["计算机"]
+tags: ["linux", "vim", "nodejs", "commitizen"]
 categories: ["开发环境"]
 
 images: ["cloud-native.png"]
@@ -34,7 +34,7 @@ Version 3.1 20210604
 tlinux3.1-64bit-5.4.119-19.0006-20210623
 ```
 
-## 一、安装vim
+## 1.安装vim
 
 主要是更新vim的版本，使其>8.0,这样某些插件才可以正常安装。
 
@@ -51,11 +51,11 @@ ln -s /usr/local/vim/bin/vim  /usr/bin/vim
 vim --version #验证是否安装成功
 ```
 
-### 快速安装基本插件
+接下来快速安装基本插件：
 
 ```bash
 cd ~
-git clone git@codechina.csdn.net:qq_41345173/tvim.git
+git clone https://gitcode.net/qq_41345173/tvim.git
 cd tvim
 cp .vimrc ~/.vimrc
 mkdir -p ~/.vim/
@@ -71,7 +71,7 @@ rm -fr tvim
 相关文章：
 <https://blog.csdn.net/qq_41345173/article/details/120381818>
 
-## 二、tlinux3安装docker
+## 2.tlinux3安装docker
 
 Tlinux3和其他原生操作系统不同，有团队维护tlinux源，安装docker-ce的方式如下：
 
@@ -102,7 +102,7 @@ Docker-compose安装：
 curl -LO "https://github.com/docker/compose/releases/download/1.29.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
-## 三、安装golang
+## 3.安装golang
 
 安装golang
 
@@ -140,7 +140,7 @@ go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@lat
 go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
 ```
 
-## 四、安装nginx
+## 4.安装nginx
 
 通过以下命令安装和启动nginx:
 
@@ -149,4 +149,26 @@ yum install nginx
 systemctl start nginx
 # nginx默认监听端口为80，安装后可以通过/etc/nginx/nginx.conf配置文件修改监听的端口
 # systemctl reload nginx可以一键重启nginx服务
+```
+
+## 5.安装nodejs
+
+首先在[官网下载页面](https://nodejs.org/zh-cn/download/)获取下载链接，然后下载安装：
+
+```bash
+mkdir -p /usr/local/nodejs
+cd /tmp
+curl -fLO https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-x64.tar.xz
+tar -xJvf node-v16.16.0-linux-x64.tar.xz -C /usr/local/nodejs
+echo 'export PATH=/usr/local/nodejs/node-v16.16.0-linux-x64.tar.xz/bin:$PATH' >> ~/.bashrc 
+source ~/.bashrc
+```
+
+## 6.安装commitizen工具
+
+[commitizen工具](https://github.com/commitizen/cz-cli)是规范化git提交信息的node插件，安装流程如下：
+
+```bash
+npm install -g commitizen
+echo '{ "path": "cz-conventional-changelog" }' >> ~/.czrc
 ```
