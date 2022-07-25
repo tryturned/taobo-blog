@@ -32,7 +32,7 @@ $(function() {
 	$("div.home-avatar").attr('style', "background: url(https://ghchart.rshah.org/tryturned);background-repeat: no-repeat;background-position: center;background-size: auto 7.5rem;");
 
 	/* 评论框加载背景图片 */
-	$(".v[data-class=v] .veditor").attr('style', "background-image: url(" + "/images/avatar.png) !important;");
+	$(".v[data-class=v] .veditor").attr('style', "background-image: url(" + "/favicon.ico) !important;");
 });
 
 function getCurrentDateString() {

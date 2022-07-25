@@ -10,7 +10,7 @@ tags: ["reptile"]
 categories: ["Python"]
 ---
 
-{{< image src="/images/valinebg.webp" caption="" title="surprise">}}
+{{< image src="valinebg.webp" caption="" title="surprise">}}
 <!--more-->
 
 ## Python 爬虫
